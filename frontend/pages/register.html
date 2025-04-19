@@ -17,6 +17,7 @@
         url="https://prod.spline.design/iz2BysJkBaQReRfQ/scene.splinecode"
       ></spline-viewer>
     </div>
+
     <div class="auth-container">
       <div class="auth-gif">
         <img
@@ -46,13 +47,28 @@
         </div>
         <button type="submit" class="btn-auth">Register</button>
       </form>
+
+      <div class="or-divider">
+        <hr />
+        <span>or</span>
+        <hr />
+      </div>
+
+      <button id="googleRegister" class="btn-auth google-btn">
+        <img
+          src="/EcoCart/frontend/assets/icons/google.png"
+          alt="Google Icon"
+        />
+        Sign up with Google
+      </button>
+
       <div class="switch-link">
         Already have an account? <a href="login.html">Login here</a>
       </div>
     </div>
 
     <script type="module">
-      import { registerUser } from '../js/auth.js';
+      import { registerUser, loginWithGoogle } from '../js/auth.js';
 
       document
         .getElementById('registerForm')
@@ -63,9 +79,20 @@
 
           try {
             await registerUser(email, password);
-            window.location.href = 'login.html';
+            window.location.href = 'dashboard.html';
           } catch (error) {
             alert('Registration Failed ❌: ' + error.message);
+          }
+        });
+
+      document
+        .getElementById('googleRegister')
+        .addEventListener('click', async () => {
+          try {
+            await loginWithGoogle();
+            window.location.href = 'dashboard.html';
+          } catch (error) {
+            alert('Google Sign-Up Failed 🚫: ' + error.message);
           }
         });
     </script>

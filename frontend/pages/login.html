@@ -42,13 +42,28 @@
         </div>
         <button type="submit" class="btn-auth">Login</button>
       </form>
+
+      <div class="or-divider">
+        <hr />
+        <span>or</span>
+        <hr />
+      </div>
+
+      <button id="googleLogin" class="btn-auth google-btn">
+        <img
+          src="/EcoCart/frontend/assets/icons/google.png"
+          alt="Google Icon"
+        />
+        Sign in with Google
+      </button>
+
       <div class="switch-link">
         Don’t have an account? <a href="register.html">Register here</a>
       </div>
     </div>
 
     <script type="module">
-      import { loginUser } from '../js/auth.js';
+      import { loginUser, loginWithGoogle } from '../js/auth.js';
 
       document
         .getElementById('loginForm')
@@ -59,9 +74,20 @@
 
           try {
             await loginUser(email, password);
-            window.location.href = 'dashboard.html'; // or wherever
+            window.location.href = 'dashboard.html';
           } catch (error) {
             alert('Login Failed 🚫: ' + error.message);
+          }
+        });
+
+      document
+        .getElementById('googleLogin')
+        .addEventListener('click', async () => {
+          try {
+            await loginWithGoogle();
+            window.location.href = 'dashboard.html';
+          } catch (error) {
+            alert('Google Sign-In Failed ❌: ' + error.message);
           }
         });
     </script>

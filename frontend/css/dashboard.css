@@ -1,3 +1,4 @@
+/* Base Styles */
 body,
 html {
   font-family: 'Poppins', sans-serif;
@@ -9,12 +10,149 @@ html {
   overflow-x: hidden;
 }
 
+/* Category Section */
+.category-section h3,
+.trending-section h4 {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+/* Category Circle Wrapper */
+.category-item {
+  text-align: center;
+}
+
+.circle-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.category-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.circle-wrapper:hover .category-image {
+  transform: scale(1.08);
+}
+
+.circle-text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px; /* You can adjust height as needed */
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-weight: 600;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+/* 🔍 Stylish Search Input */
+.search-container {
+  position: relative;
+  width: 250px;
+  transition: all 0.3s ease;
+  transform: translateX(-90px);
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 40px 8px 16px;
+  border-radius: 50px;
+  border: 2px solid #28a745;
+  outline: none;
+  font-size: 0.95rem;
+  transition: 0.4s ease;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.search-input:focus {
+  width: 300px;
+  box-shadow: 0 0 12px #28a74550;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #28a745;
+  pointer-events: none;
+}
+
+/* Trending Section */
+.trending-section {
+  margin-top: 40px;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 180px;
+  background: #fff;
+  border: 1px solid #c8e6c9;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.product-card p {
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Navbar Styles */
 .navbar {
-  background: transparent !important;
+  background-color: white !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
-  color: #61dafb !important;
+  color: #000000 !important;
   font-weight: 600;
   font-size: 2rem;
   text-shadow: 0 0 8px #61dafb, 0 0 16px #61dafb;
@@ -22,11 +160,9 @@ html {
   z-index: 1050;
 }
 
-/* Floating top-right corner toggle */
-/* Custom Floating Toggler */
 .navbar-toggler {
   position: fixed;
-  top: 0.75rem; /* Slightly higher */
+  top: 0.75rem;
   right: 1rem;
   width: 48px;
   height: 48px;
@@ -78,7 +214,6 @@ html {
   top: 8px;
 }
 
-/* Transform into X when active */
 .navbar-toggler.active .navbar-toggler-icon {
   background-color: transparent;
 }
@@ -93,6 +228,7 @@ html {
   top: 0;
 }
 
+/* Navbar Links */
 .nav-link {
   color: #2e7d32 !important;
   font-weight: 600;
@@ -105,7 +241,7 @@ html {
   padding-left: 8px;
 }
 
-/* Customize Offcanvas Menu */
+/* Offcanvas */
 .offcanvas {
   background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
@@ -122,29 +258,7 @@ html {
   color: #2e7d32;
 }
 
-.dashboard-wrapper {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.spline-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 0;
-}
-
-spline-viewer {
-  width: 100%;
-  height: 100%;
-  display: block;
-  pointer-events: none;
-}
-
+/* Loading Overlay */
 #hello-overlay {
   position: fixed;
   top: 0;
@@ -186,6 +300,7 @@ spline-viewer {
   }
 }
 
+/* Dashboard Section */
 #dashboard-content {
   position: relative;
   z-index: 1;
@@ -197,6 +312,7 @@ spline-viewer {
   padding-top: 80px;
 }
 
+/* Chart Section */
 .chart-container {
   width: 90%;
   max-width: 600px;
@@ -204,6 +320,7 @@ spline-viewer {
   margin-top: 2rem;
 }
 
+/* Custom Button */
 .button-54 {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -222,6 +339,7 @@ spline-viewer {
   box-shadow: 4px 4px 0px #28a745, 8px 8px 0px #28a745;
 }
 
+/* Forms & Modals */
 .modal-dialog {
   max-width: 500px;
 }

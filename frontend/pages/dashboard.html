@@ -17,23 +17,48 @@
   </head>
 
   <body>
+    <!-- LOADING OVERLAY -->
+    <div id="hello-overlay" class="overlay">
+      <div class="overlay-content">
+        <p id="typing-text">Loading...</p>
+      </div>
+    </div>
+
     <!-- NAVBAR -->
-    <nav class="navbar fixed-top">
-      <div class="container-fluid position-relative">
-        <a class="navbar-brand" href="/EcoCart/frontend/pages/dashboard.html"
-          >EcoCart</a
-        >
+    <nav class="navbar fixed-top bg-white shadow-sm">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
+      >
+        <!-- Left: Brand -->
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand" href="/EcoCart/frontend/pages/dashboard.html"
+            >EcoCart</a
+          >
+        </div>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- Center: Search Bar -->
+        <div class="search-container mx-auto">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search for eco products..."
+          />
+          <div class="search-icon">🔍</div>
+        </div>
 
+        <!-- Right: Toggler -->
+        <div class="d-flex align-items-center">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Offcanvas -->
         <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title">Menu</h5>
@@ -41,7 +66,18 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Ecotips</a></li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/dashboard.html"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/EcoCart/frontend/pages/ecotips.html"
+                  >Ecotips</a
+                >
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Wishlist</a>
               </li>
@@ -58,182 +94,194 @@
       </div>
     </nav>
 
-    <!-- OVERLAY -->
-    <div id="hello-overlay">
-      <span id="typing-text"></span>
-    </div>
-
     <!-- MAIN CONTENT -->
-    <div class="dashboard-wrapper">
-      <div class="spline-bg">
-        <spline-viewer
-          url="https://prod.spline.design/iz2BysJkBaQReRfQ/scene.splinecode"
-        ></spline-viewer>
-      </div>
+    <div id="dashboard-content" class="container mt-5 pt-5">
+      <!-- CATEGORY CATALOGS -->
+      <section class="category-section text-center">
+        <h3 class="mb-4">Shop by Categories</h3>
 
-      <div id="dashboard-content" class="container content-container">
-        <!-- Buttons -->
-        <div class="d-flex flex-column align-items-start gap-3">
-          <button
-            class="button-54"
-            id="openModalBtn"
-            data-bs-toggle="modal"
-            data-bs-target="#manualInputModal"
+        <!-- First Row: 5 Circles -->
+        <div class="d-flex flex-wrap justify-content-center gap-4 mb-4">
+          <a
+            href="/EcoCart/frontend/pages/category/clothing.html"
+            style="text-decoration: none; color: inherit; display: block"
           >
-            Tell Us About a Product
-          </button>
-
-          <button
-            class="button-54"
-            id="getSuggestionsBtn"
-            style="display: none"
-            data-bs-toggle="modal"
-            data-bs-target="#ecoSuggestionsModal"
-          >
-            Get Green Alternatives
-          </button>
-        </div>
-
-        <div class="chart-container mt-4">
-          <canvas id="greenProductUsageChart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL -->
-    <!-- Manual Product Input Modal -->
-    <div class="modal fade" id="manualInputModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <form id="manualProductForm">
-            <div class="modal-header">
-              <h5 class="modal-title">Enter Product Details</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="productName" class="form-label">Product Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="productName"
-                  required
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/shop.png"
+                  alt="Clothing"
+                  class="category-image"
                 />
-              </div>
-              <div class="mb-3">
-                <label for="materials" class="form-label">Materials</label>
-                <textarea
-                  class="form-control"
-                  id="materials"
-                  rows="3"
-                ></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="brandEthics" class="form-label">Brand Ethics</label>
-                <textarea
-                  class="form-control"
-                  id="brandEthics"
-                  rows="2"
-                ></textarea>
+                <span class="circle-text">Clothing</span>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-success">
-                Submit Details
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/furniture.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/home-decor.png"
+                  alt="Furniture"
+                  class="category-image"
+                />
+                <span class="circle-text">Furniture</span>
+              </div>
             </div>
-          </form>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/stationary.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/bagpack.png"
+                  alt="stationary"
+                  class="category-image"
+                />
+                <span class="circle-text">stationary</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/fertilizer.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/farm.png"
+                  alt="Firtilizers"
+                  class="category-image"
+                />
+                <span class="circle-text">Firtilizers</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/party.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/dancing.png"
+                  alt="Party Suppliers"
+                  class="category-image"
+                />
+                <span class="circle-text">Party Suppliers</span>
+              </div>
+            </div>
+          </a>
         </div>
-      </div>
-    </div>
 
-    <!-- Eco Suggestions Modal -->
-    <div class="modal fade" id="ecoSuggestionsModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Eco-Friendly Alternatives</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
+        <!-- Second Row: 4 Circles (centered) -->
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <a
+            href="/EcoCart/frontend/pages/category/packaging.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/packing.png"
+                  alt="Packaging Materials"
+                  class="category-image"
+                />
+                <span class="circle-text">Packaging Materials</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/toys.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/toy.png"
+                  alt="Kid Toys"
+                  class="category-image"
+                />
+                <span class="circle-text">Kid Toys</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/utilities.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/comb.png"
+                  alt="Utilities"
+                  class="category-image"
+                />
+                <span class="circle-text">Utilities</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/kitchen.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/spatula.png"
+                  alt="Kitchen Appliances"
+                  class="category-image"
+                />
+                <span class="circle-text">Kitchen Appliances</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- TRENDING PRODUCTS -->
+      <section class="trending-section mt-5 text-center">
+        <h4>Most Sold Biodegradable Products</h4>
+        <div class="scrolling-wrapper">
+          <div class="product-card">
+            <img
+              src="/EcoCart/frontend/assets/products/product1.jpg"
+              alt="Product 1"
+            />
+            <p>Reusable Bamboo Cutlery</p>
           </div>
-          <div class="modal-body">
-            <ul class="list-group">
-              <li class="list-group-item">🌱 Recycled Paper Bags</li>
-              <li class="list-group-item">🍃 Bamboo Toothbrush</li>
-              <li class="list-group-item">♻️ Compostable Packaging</li>
-              <li class="list-group-item">🧴 Refillable Bottles</li>
-            </ul>
+          <div class="product-card">
+            <img
+              src="/EcoCart/frontend/assets/products/product2.jpg"
+              alt="Product 2"
+            />
+            <p>Compostable Garbage Bags</p>
           </div>
-          <div class="modal-footer">
-            <button class="btn btn-outline-success" data-bs-dismiss="modal">
-              Nice! 🌍
-            </button>
+          <div class="product-card">
+            <img
+              src="/EcoCart/frontend/assets/products/product3.jpg"
+              alt="Product 3"
+            />
+            <p>Coconut Fiber Scrubber</p>
+          </div>
+          <div class="product-card">
+            <img
+              src="/EcoCart/frontend/assets/products/product4.jpg"
+              alt="Product 4"
+            />
+            <p>Eco Dishwash Bar</p>
           </div>
         </div>
-      </div>
+      </section>
     </div>
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/EcoCart/frontend/js/dashboard.js"></script>
-    <script>
-      const manualForm = document.getElementById('manualProductForm');
-      const suggestionsBtn = document.getElementById('getSuggestionsBtn');
-      const modalElement = document.getElementById('manualInputModal');
-
-      manualForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const productName = document.getElementById('productName').value;
-
-        if (productName.trim() !== '') {
-          // Close the first modal
-          const modal = bootstrap.Modal.getInstance(modalElement);
-          modal.hide();
-
-          // Show second button with a fade-in effect
-          suggestionsBtn.style.display = 'inline-block';
-          suggestionsBtn.classList.add('fade-in');
-        }
-      });
-      document
-        .querySelector('.navbar-toggler')
-        .addEventListener('click', function () {
-          this.classList.toggle('active');
-        });
-    </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const toggler = document.querySelector('.navbar-toggler');
-        const offcanvas = document.getElementById('offcanvasNavbar');
-
-        offcanvas.addEventListener('show.bs.offcanvas', () => {
-          toggler.classList.add('active');
-        });
-
-        offcanvas.addEventListener('hidden.bs.offcanvas', () => {
-          toggler.classList.remove('active');
-        });
-      });
-    </script>
   </body>
 </html>

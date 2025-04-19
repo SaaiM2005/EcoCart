@@ -13,92 +13,53 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.style.display = 'none';
       dashboard.style.opacity = '1';
     }, 1000);
-  }, 2500); // Time adjusted to match typing animation
+  }, 2500);
 
-  // Chart setup
-  const ctx = document.getElementById('greenProductUsageChart');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ],
-      datasets: [
-        {
-          label: 'Green Product Usage',
-          data: [65, 59, 80, 81, 56, 55, 40, 70, 62, 78, 90, 85],
-          borderColor: '#28a745',
-          borderWidth: 2,
-          tension: 0.3,
-          fill: false,
-          pointBackgroundColor: '#28a745',
-          pointRadius: 4,
-          pointHoverRadius: 6,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Monthly Green Product Usage',
-          font: { size: 16 },
-          color: '#333',
-        },
-        legend: {
-          labels: { color: '#333' },
-        },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: { display: true, text: 'Usage Count', color: '#555' },
-          ticks: { color: '#555' },
-          grid: { borderDash: [2, 2], color: '#ddd' },
-        },
-        x: {
-          ticks: { color: '#555' },
-          grid: { display: false },
-        },
-      },
-    },
+  // Dynamically load categories (if needed)
+  const categories = [
+    { name: 'Clothing', icon: '👗' },
+    { name: 'Footwear', icon: '👟' },
+    { name: 'Accessories', icon: '👜' },
+    { name: 'Beauty', icon: '💄' },
+    { name: 'Home', icon: '🏡' },
+    { name: 'Electronics', icon: '📱' },
+  ];
+
+  const categoryContainer = document.getElementById('categoryContainer');
+
+  categories.forEach((category) => {
+    const catDiv = document.createElement('div');
+    catDiv.className = 'category-circle';
+    catDiv.innerHTML = `<span class="icon">${category.icon}</span><p>${category.name}</p>`;
+    categoryContainer.appendChild(catDiv);
   });
 
-  // Modal form submit
-  document
-    .getElementById('manualProductForm')
-    .addEventListener('submit', (e) => {
-      e.preventDefault();
+  // Dynamically populate the slider with top selling biodegradable products
+  const productSlider = document.getElementById('topProductsSlider');
 
-      const productName = document.getElementById('productName').value;
-      const materials = document.getElementById('materials').value;
-      const brandEthics = document.getElementById('brandEthics').value;
+  const topProducts = [
+    {
+      name: 'Bamboo Toothbrush',
+      image: '/EcoCart/assets/products/bamboo_brush.jpg',
+    },
+    {
+      name: 'Reusable Cotton Bag',
+      image: '/EcoCart/assets/products/cotton_bag.jpg',
+    },
+    {
+      name: 'Compostable Plates',
+      image: '/EcoCart/assets/products/compost_plates.jpg',
+    },
+    { name: 'Eco Soap Bars', image: '/EcoCart/assets/products/soap_bars.jpg' },
+  ];
 
-      console.log(
-        'Product:',
-        productName,
-        'Materials:',
-        materials,
-        'Brand Ethics:',
-        brandEthics
-      );
-
-      const modal = bootstrap.Modal.getInstance(
-        document.getElementById('manualInputModal')
-      );
-      modal.hide();
-    });
+  topProducts.forEach((product) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" />
+        <h6>${product.name}</h6>
+      `;
+    productSlider.appendChild(card);
+  });
 });
