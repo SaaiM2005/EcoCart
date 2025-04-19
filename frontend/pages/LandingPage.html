@@ -3,196 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EcoCart - Shop Sustainably, Level Up Your Impact</title>
+    <title>EcoCart - Shop Sustainably</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-b3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <style>
-      body {
-        font-family: sans-serif;
-        background-color: #f8f9fa;
-      }
-      .hero {
-        background: linear-gradient(
-          135deg,
-          #8fbc8f,
-          #3cb371
-        ); /* A nice green gradient */
-        color: white;
-        padding: 100px 0;
-        text-align: center;
-      }
-      .hero h1 {
-        font-size: 3.5rem;
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
-      }
-      .search-section {
-        padding: 60px 0;
-        text-align: center;
-      }
-      .search-bar {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      .eco-value-proposition {
-        background-color: #e9ecef;
-        padding: 80px 0;
-      }
-      .eco-value-proposition .icon-box {
-        text-align: center;
-        padding: 30px;
-      }
-      .eco-value-proposition i {
-        font-size: 2.5rem;
-        color: #28a745;
-        margin-bottom: 15px;
-      }
-      .eco-value-proposition h3 {
-        margin-bottom: 10px;
-        font-weight: bold;
-      }
-      .cta-button {
-        background-color: #28a745 !important;
-        border-color: #28a745 !important;
-        font-size: 1.2rem;
-        padding: 12px 30px;
-        border-radius: 8px;
-        transition: background-color 0.3s ease;
-      }
-      .cta-button:hover {
-        background-color: #218838 !important;
-        border-color: #218838 !important;
-      }
-      .scroll-down {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        animation: bounce 1.5s infinite alternate;
-      }
-      @keyframes bounce {
-        from {
-          transform: translateY(0) translateX(-50%);
-        }
-        to {
-          transform: translateY(-15px) translateX(-50%);
-        }
-      }
-      .footer {
-        background-color: #343a40;
-        color: white;
-        text-align: center;
-        padding: 20px 0;
-        position: relative;
-        bottom: 0;
-        width: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="/EcoCart/frontend/css/style.css" />
+
+    <!-- Firebase -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <section
-      class="hero d-flex align-items-center justify-content-center vh-100 position-relative"
-    >
-      <div class="container text-center">
-        <h1 class="display-4">Shop Smarter, Live Greener with EcoCart</h1>
-        <p class="lead">
+    <div class="top-nav">
+      <div class="nav-left">
+        <a
+          href="/EcoCart/frontend/pages/LandingPage.html"
+          style="text-decoration: none; color: inherit"
+        >
+          <h2 class="brand">
+            <img
+              src="/EcoCart/frontend/assets/icons/ecocart_logo.png"
+              alt="EcoCart Logo"
+              style="width: 120px; height: auto"
+            />
+          </h2>
+        </a>
+      </div>
+      <div class="nav-right">
+        <button class="btn-nav btn-login" onclick="redirectToLogin()">
+          Login
+        </button>
+        <button class="btn-nav btn-register" onclick="redirectToRegister()">
+          Register
+        </button>
+      </div>
+    </div>
+
+    <section class="hero d-flex align-items-center justify-content-center">
+      <div class="container hero-content">
+        <h1>Join the Movement for Sustainable Shopping</h1>
+        <p class="descrip">
           Discover eco-friendly products and make a positive impact, one
           purchase at a time.
         </p>
-        <button
-          class="btn btn-lg cta-button"
-          onclick="document.getElementById('search-section').scrollIntoView({ behavior: 'smooth' });"
-        >
+        <button id="startShoppingBtn" class="btn btn-lg cta-button">
           Start Shopping Sustainably
         </button>
       </div>
-      <div
-        class="scroll-down"
-        onclick="document.getElementById('search-section').scrollIntoView({ behavior: 'smooth' });"
-      >
-        <i class="fas fa-chevron-down"></i>
-      </div>
+      <!-- Scroll GIF trigger -->
+      <img
+        src="/EcoCart/frontend/assets/icons/leaves.gif"
+        alt="Scroll Down"
+        class="scroll-gif"
+        onclick="document.getElementById('value-proposition').scrollIntoView({ behavior: 'smooth' });"
+      />
     </section>
 
-    <section id="search-section" class="search-section">
+    <section id="value-proposition" class="eco-value-proposition">
       <div class="container">
-        <h2>
-          <i class="fas fa-search mr-2"></i> Find Sustainable Alternatives
-        </h2>
-        <p class="lead">
-          Enter the product you're looking for and let EcoCart find greener
-          options.
-        </p>
-        <div class="search-bar">
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control form-control-lg"
-              placeholder="e.g., organic cotton t-shirt, plastic-free shampoo"
-            />
-            <div class="input-group-append">
-              <button class="btn btn-success btn-lg" type="button">
-                <i class="fas fa-arrow-right"></i> Search
-              </button>
-            </div>
-          </div>
-          <small class="form-text text-muted mt-2"
-            >We'll show you eco-ratings and better choices.</small
-          >
-        </div>
-      </div>
-    </section>
-
-    <section class="eco-value-proposition">
-      <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-md-4 icon-box">
             <i class="fas fa-leaf"></i>
             <h3>Discover Eco-Friendly Products</h3>
-            <p>
-              Easily find products with high eco-scores and sustainable
-              practices.
-            </p>
+            <p>Find products with high eco-scores and sustainable materials.</p>
           </div>
           <div class="col-md-4 icon-box">
             <i class="fas fa-hand-holding-heart"></i>
             <h3>Support Ethical Brands</h3>
-            <p>
-              Learn about brand ethics and make choices that align with your
-              values.
-            </p>
+            <p>Learn about brand ethics and shop with your values.</p>
           </div>
           <div class="col-md-4 icon-box">
             <i class="fas fa-chart-line"></i>
             <h3>Track Your Impact</h3>
-            <p>
-              See the positive environmental impact of your sustainable shopping
-              habits.
-            </p>
+            <p>See how your choices help the planet, one step at a time.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <p>&copy; 2025 EcoCart - Shopping for a Better Planet</p>
+    <footer>
+      <h3>Big Brain 1st Rank</h3>
+      <p>&copy; 2025 EcoCart - Shopping for a Better Planet 🌍</p>
     </footer>
 
+    <script src="js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
+  <script type="module" src="../js/firebase-config.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js" type="module"></script>
 </html>

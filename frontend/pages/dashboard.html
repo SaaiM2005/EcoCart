@@ -1,411 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EcoCart Dashboard</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/EcoCart/frontend/css/dashboard.css" />
+  </head>
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background-color: #f4f7fc;
-            color: #333;
-            padding-top: 56px;
-            overflow-x: hidden;
-        }
+  <body>
+    <!-- LOADING OVERLAY -->
+    <div id="hello-overlay" class="overlay">
+      <div class="overlay-content">
+        <p id="typing-text">Loading...</p>
+      </div>
+    </div>
 
-        /* Navbar */
-        .navbar {
-            background: linear-gradient(90deg, #042c03, #ffffff) !important;
-            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
-            height: 10%;
-        }
-        .navbar-toggler {
-        border: none !important;
-        box-shadow: none !important;
-        }
-
-        .navbar-brand {
-            color: #61dafb !important;
-            font-weight: 600;
-            font-size: 2rem;
-        }
-        #dashboard-content {
-            opacity: 0.5;
-            transition: opacity 1s ease;
-            padding: 2rem; /* Add some padding around the graph */
-            display: flex;
-            flex-direction: column; /* Arrange button above chart */
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
-            min-height: calc(60vh); /* Ensure it takes at least 60% of the viewport height */
-        }
-
-        .nav-link {
-            color: #f1f1f1 !important;
-            font-weight: 500;
-        }
-
-        .nav-link:hover {
-            color: #61dafb !important;
-        }
-
-        .offcanvas {
-            background-color: #ffffff;
-            border-left: 1px solid #ddd;
-        }
-
-        .dropdown-menu {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-
-        .dropdown-item:hover {
-            background-color: #f0f4f8;
-        }
-        /* Nav links default black, green on hover */
-    .nav-link {
-        color: #000 !important;
-        transition: color 0.3s ease;
-    }
-
-    .nav-link:hover {
-        color: #28a745 !important; /* Bootstrap's green */
-    }
-
-    /* Search button default black border/text, green on hover */
-    .btn-outline-primary {
-        color: #000;
-        border-color: #000;
-        transition: all 0.3s ease;
-    }
-
-    .btn-outline-primary:hover {
-        color: #fff;
-        background-color: #28a745;
-        border-color: #28a745;
-    }
-
-        /* Overlay */
-        #hello-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(8px);
-            background-color: rgba(0, 0, 0, 0.4);
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            padding: 2rem;
-            font-size: 3rem;
-            font-weight: bold;
-            color: #61dafb;
-            opacity: 1;
-            transition: opacity 1s ease, backdrop-filter 1s ease;
-            z-index: 9999;
-        }
-
-        #dashboard-content {
-            opacity: 0.5;
-            transition: opacity 1s ease;
-            display: flex;
-            flex-direction: column; /* Arrange button above chart */
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
-            min-height: calc(60vh); /* Ensure it takes at least 60% of the viewport height */
-        }
-
-        .card {
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-            color: #333;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-title {
-            color: #2c3e50;
-            font-weight: 600;
-            font-size: 1.3rem;
-        }
-
-        .card-text {
-            font-size: 1.1rem;
-            color: #5d6d7e;
-        }
-
-        .content-container {
-            padding: 2rem;
-        }
-
-        .form-control {
-            border-radius: 10px;
-        }
-
-        .btn-outline-primary {
-            border-radius: 10px;
-        }
-        .offcanvas-body .nav-link {
-            font-size: 1.5rem; /* Increased font size for menu */
-        }
-        .chart-container {
-            width: 80%; /* Adjust as needed */
-            max-width: 600px; /* Set a maximum width if desired */
-            margin-top: 20px; /* Add some space between button and chart */
-        }
-
-        /* CSS for Button 54 */
-        .button-54 {
-            font-family: "Open Sans", sans-serif;
-            font-size: 16px;
-            letter-spacing: 2px;
-            text-decoration: none;
-            text-transform: uppercase;
-            color: #000;
-            cursor: pointer;
-            border: 3px solid #28a745; /* Green border */
-            padding: 0.25em 0.5em;
-            box-shadow: 1px 1px 0px 0px #28a745, 2px 2px 0px 0px #28a745, 3px 3px 0px 0px #28a745, 4px 4px 0px 0px #28a745, 5px 5px 0px 0px #28a745; /* Green shadow */
-            position: relative;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            background-color: white; /* White background */
-            transition: box-shadow 0.2s ease-in-out, top 0.2s ease-in-out, left 0.2s ease-in-out;
-        }
-
-        .button-54:active {
-            box-shadow: 0px 0px 0px 0px;
-            top: 5px;
-            left: 5px;
-        }
-        
-
-        .button-54:hover {
-            box-shadow: 2px 2px 0px 0px #28a745, 4px 4px 0px 0px #28a745, 6px 6px 0px 0px #28a745, 8px 8px 0px 0px #28a745, 10px 10px 0px 0px #28a745;
-        
-          }
-
-        @media (min-width: 768px) {
-            .button-54 {
-                padding: 0.25em 0.75em;
-            }
-        }
-
-        /* Style for the modal */
-        .modal-dialog {
-            max-width: 500px;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">EcoCart</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Ecotips</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Wishlist</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Signout</a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
+    <!-- NAVBAR -->
+    <nav class="navbar fixed-top bg-white shadow-sm">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
+      >
+        <!-- Left: Brand -->
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand" href="/EcoCart/frontend/pages/dashboard.html"
+            >EcoCart</a
+          >
         </div>
+
+        <!-- Center: Search Bar -->
+        <div class="search-container mx-auto">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search for eco products..."
+          />
+          <div class="search-icon">🔍</div>
+        </div>
+
+        <!-- Right: Toggler -->
+        <div class="d-flex align-items-center">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Offcanvas -->
+        <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/dashboard.html"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/EcoCart/frontend/pages/ecotips.html"
+                  >Ecotips</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Wishlist</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/LandingPage.html"
+                  >Signout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </nav>
 
-    <div id="hello-overlay">Hello User</div>
+    <!-- MAIN CONTENT -->
+    <div id="dashboard-content" class="container mt-5 pt-5">
+      <!-- CATEGORY CATALOGS -->
+      <section class="category-section text-center">
+        <h3 class="mb-4">Shop by Categories</h3>
 
-    <div id="dashboard-content" class="container content-container">
-        <button class="button-54" role="button" data-bs-toggle="modal" data-bs-target="#manualInputModal">Greenify a Product</button>
-        <div class="chart-container">
-            <canvas id="greenProductUsageChart"></canvas>
-        </div>
-    </div>
-
-    <div class="modal fade" id="manualInputModal" tabindex="-1" aria-labelledby="manualInputModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="manualInputModalLabel">Enter Product Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="manualProductForm">
-                        <div class="mb-3">
-                            <label for="productName" class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="productName" placeholder="Enter product name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="materials" class="form-label">Materials</label>
-                            <textarea class="form-control" id="materials" rows="3" placeholder="List the materials used"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="brandEthics" class="form-label">Brand Ethics (Optional)</label>
-                            <textarea class="form-control" id="brandEthics" rows="2" placeholder="Information about the brand's ethics"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Get Eco-Suggestions</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+        <!-- First Row: 5 Circles -->
+        <div class="d-flex flex-wrap justify-content-center gap-4 mb-4">
+          <a
+            href="/EcoCart/frontend/pages/category/clothing.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/shop.png"
+                  alt="Clothing"
+                  class="category-image"
+                />
+                <span class="circle-text">Clothing</span>
+              </div>
             </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/furniture.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/home-decor.png"
+                  alt="Furniture"
+                  class="category-image"
+                />
+                <span class="circle-text">Furniture</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/stationary.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/bagpack.png"
+                  alt="stationary"
+                  class="category-image"
+                />
+                <span class="circle-text">stationary</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/fertilizer.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/farm.png"
+                  alt="Firtilizers"
+                  class="category-image"
+                />
+                <span class="circle-text">Firtilizers</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/party.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/dancing.png"
+                  alt="Party Suppliers"
+                  class="category-image"
+                />
+                <span class="circle-text">Party Suppliers</span>
+              </div>
+            </div>
+          </a>
         </div>
+
+        <!-- Second Row: 4 Circles (centered) -->
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <a
+            href="/EcoCart/frontend/pages/category/packaging.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/packing.png"
+                  alt="Packaging Materials"
+                  class="category-image"
+                />
+                <span class="circle-text">Packaging Materials</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/toys.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/toy.png"
+                  alt="Kid Toys"
+                  class="category-image"
+                />
+                <span class="circle-text">Kid Toys</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/utilities.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/comb.png"
+                  alt="Utilities"
+                  class="category-image"
+                />
+                <span class="circle-text">Utilities</span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="/EcoCart/frontend/pages/category/kitchen.html"
+            style="text-decoration: none; color: inherit; display: block"
+          >
+            <div class="category-item">
+              <div class="circle-wrapper">
+                <img
+                  src="/EcoCart/frontend/assets/Category/spatula.png"
+                  alt="Kitchen Appliances"
+                  class="category-image"
+                />
+                <span class="circle-text">Kitchen Appliances</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- TRENDING PRODUCTS -->
+      <section class="trending-section mt-5 text-center">
+        <h4>Most Sold Biodegradable Products</h4>
+        <div class="scrolling-wrapper">
+          <div class="product-card">
+            <img
+              src="/EcoCart/frontend/assets/products/product1.jpg"
+              alt="Product 1"
+            />
+            <p>Reusable Bamboo Cutlery</p>
+          </div>
+          <div class="product-card">
+            <img
+              src="/EcoCart/frontend/assets/products/product2.jpg"
+              alt="Product 2"
+            />
+            <p>Compostable Garbage Bags</p>
+          </div>
+          <div class="product-card">
+            <img
+              src="/EcoCart/frontend/assets/products/product3.jpg"
+              alt="Product 3"
+            />
+            <p>Coconut Fiber Scrubber</p>
+          </div>
+          <div class="product-card">
+            <img
+              src="/EcoCart/frontend/assets/products/product4.jpg"
+              alt="Product 4"
+            />
+            <p>Eco Dishwash Bar</p>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const overlay = document.getElementById('hello-overlay');
-            const dashboard = document.getElementById('dashboard-content');
-            const chartCanvas = document.getElementById('greenProductUsageChart');
-            const manualInputButton = document.querySelector('.button-54');
-            const manualInputModal = new bootstrap.Modal(document.getElementById('manualInputModal'));
-            const manualProductForm = document.getElementById('manualProductForm');
-
-            dashboard.style.opacity = 0.5;
-
-            setTimeout(() => {
-                overlay.style.backdropFilter = 'blur(0px)';
-                overlay.style.opacity = '0';
-                dashboard.style.opacity = '1';
-
-                setTimeout(() => {
-                    overlay.style.display = 'none';
-                }, 1000);
-            }, 2000);
-
-            // Chart Data and Configuration
-            const usageData = {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                datasets: [{
-                    label: 'Green Product Usage',
-                    data: [65, 59, 80, 81, 56, 55, 40, 70, 62, 78, 90, 85], // Replace with your actual data
-                    fill: false,
-                    borderColor: '#28a745', // Professional green color
-                    tension: 0.1,
-                    borderWidth: 2,
-                    pointBackgroundColor: '#28a745',
-                    pointRadius: 3,
-                    pointHoverRadius: 5
-                }]
-            };
-
-            const chartConfig = {
-                type: 'line',
-                data: usageData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Usage Count',
-                                color: '#555'
-                            },
-                            grid: {
-                                borderColor: '#eee',
-                                borderDash: [2, 2]
-                            },
-                            ticks: {
-                                color: '#555'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                color: '#555'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: true,
-                            labels: {
-                                color: '#333'
-                            }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Monthly Green Product Usage',
-                            font: {
-                                size: 16
-                            },
-                            color: '#333'
-                        }
-                    }
-                }
-            };
-
-            // Create the chart
-            const greenProductUsageChart = new Chart(chartCanvas, chartConfig);
-
-            // No need for the separate openManualInput function anymore
-            // The button now uses Bootstrap's data-bs-toggle and data-bs-target
-        });
-
-        // Handle form submission (you'll need to implement the logic to process the input)
-        document.getElementById('manualProductForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-            const productName = document.getElementById('productName').value;
-            const materials = document.getElementById('materials').value;
-            const brandEthics = document.getElementById('brandEthics').value;
-
-            console.log("Product Name:", productName);
-            console.log("Materials:", materials);
-            console.log("Brand Ethics:", brandEthics);
-
-            // Here you would typically send this data to your backend
-            // to get eco-friendliness rating and suggestions.
-
-            // For now, let's just close the modal after submission
-            const manualInputModal = bootstrap.Modal.getInstance(document.getElementById('manualInputModal'));
-            manualInputModal.hide();
-
-            // Optionally, you can display a "loading..." message or feedback to the user
-        });
-    </script>
-
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="/EcoCart/frontend/js/dashboard.js"></script>
+  </body>
 </html>
