@@ -3,34 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EcoCart - Clothing</title>
-    <!-- Bootstrap CSS -->
+    <title>Eco-Friendly Clothing - EcoCart</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
     />
-    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/EcoCart/frontend/css/clothing.css" />
+    <link rel="stylesheet" href="/EcoCart/frontend/css/category/clothing.css" />
   </head>
   <body>
-    <!-- NAVBAR (Same as dashboard) -->
     <nav class="navbar fixed-top bg-white shadow-sm">
       <div
         class="container-fluid d-flex justify-content-between align-items-center"
       >
-        <!-- Left: Brand -->
         <div class="d-flex align-items-center">
           <a class="navbar-brand" href="/EcoCart/frontend/pages/dashboard.html"
             >EcoCart</a
           >
         </div>
-
-        <!-- Center: Search Bar -->
         <div class="search-container mx-auto">
           <input
             type="text"
@@ -39,8 +32,6 @@
           />
           <div class="search-icon">🔍</div>
         </div>
-
-        <!-- Right: Toggler -->
         <div class="d-flex align-items-center">
           <button
             class="navbar-toggler"
@@ -51,8 +42,6 @@
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
-
-        <!-- Offcanvas Menu -->
         <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title">Menu</h5>
@@ -87,94 +76,35 @@
         </div>
       </div>
     </nav>
+    <div class="container py-5 mt-5">
+      <h2 class="mb-4 text-center category-heading">Eco-Friendly Clothing</h2>
 
-    <!-- MAIN CONTENT -->
-    <div class="container clothing-container">
-      <h2 class="category-title">Sustainable Clothing</h2>
-
-      <!-- Subcategory Tabs -->
-      <ul class="nav nav-tabs" id="clothingTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link active"
-            id="all-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#all"
-            type="button"
-          >
-            All Products
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="men-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#men"
-            type="button"
-          >
-            Men's Wear
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="women-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#women"
-            type="button"
-          >
-            Women's Wear
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="kids-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#kids"
-            type="button"
-          >
-            Kids Wear
-          </button>
-        </li>
-      </ul>
-
-      <!-- Tab Content -->
-      <div class="tab-content" id="clothingTabContent">
-        <!-- All Products -->
-        <div class="tab-pane fade show active" id="all" role="tabpanel">
-          <div class="row product-grid">
-            <!-- Product cards will be loaded dynamically via JavaScript -->
-          </div>
-        </div>
-
-        <!-- Men's Wear -->
-        <div class="tab-pane fade" id="men" role="tabpanel">
-          <div class="row product-grid">
-            <!-- Content loaded dynamically -->
-          </div>
-        </div>
-
-        <!-- Women's Wear -->
-        <div class="tab-pane fade" id="women" role="tabpanel">
-          <div class="row product-grid">
-            <!-- Content loaded dynamically -->
-          </div>
-        </div>
-
-        <!-- Kids Wear -->
-        <div class="tab-pane fade" id="kids" role="tabpanel">
-          <div class="row product-grid">
-            <!-- Content loaded dynamically -->
+      <div id="allProductsContainer" class="row g-4">
+        <div class="col-12 text-center">
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Bootstrap JS -->
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="/EcoCart/frontend/js/clothing.js"></script>
+    <script src="/EcoCart/frontend/js/category.js"></script>
+
+    <script src="/EcoCart/frontend/js/category/product-json-loader.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggler = document.querySelector('.navbar-toggler');
+        const offcanvas = document.getElementById('offcanvasNavbar');
+
+        offcanvas.addEventListener('show.bs.offcanvas', () => {
+          toggler.classList.add('active');
+        });
+
+        offcanvas.addEventListener('hidden.bs.offcanvas', () => {
+          toggler.classList.remove('active');
+        });
+      });
+    </script>
   </body>
 </html>
