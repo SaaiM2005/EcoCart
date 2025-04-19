@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoCart - Ecotips: Small Changes, Big Impact</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/EcoCart/frontend/css/ecotips.css" />
+  </head>
+  <body>
+    <nav class="navbar fixed-top bg-white shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">EcoCart</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/dashboard.html"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/EcoCart/frontend/pages/ecotips.html"
+                  >Ecotips</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Wishlist</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/LandingPage.html"
+                  >Signout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="ecotips-container mt-5">
+      <h1>Small Changes, Big Impact</h1>
+      <p class="lead mb-4">
+        Explore simple ways to make your daily life more sustainable.
+      </p>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i
+                class="bi bi-bag-check-fill ecotip-icon sustainable-shopping"
+              ></i>
+              <h5 class="ecotip-title">Sustainable Shopping</h5>
+              <p class="ecotip-text">
+                Look for eco-labels like Fair Trade, Organic, and FSC to support
+                environmentally and ethically produced goods.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-box-seam-fill ecotip-icon reduce-packaging"></i>
+              <h5 class="ecotip-title">Reduce Packaging Waste</h5>
+              <p class="ecotip-text">
+                Choose products with minimal or recyclable packaging. Consider
+                buying in bulk when possible.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-hourglass-split ecotip-icon product-lifespan"></i>
+              <h5 class="ecotip-title">Consider Product Lifespan</h5>
+              <p class="ecotip-text">
+                Invest in durable, high-quality items that last longer, reducing
+                the need for frequent replacements.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-recycle ecotip-icon reusable-bags"></i>
+              <h5 class="ecotip-title">Bring Reusable Bags</h5>
+              <p class="ecotip-text">
+                Always bring your own reusable bags when you go grocery shopping
+                or to other stores.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-cup-straw ecotip-icon reusable-bottles"></i>
+              <h5 class="ecotip-title">Use Reusable Bottles & Cups</h5>
+              <p class="ecotip-text">
+                Carry a reusable water bottle and coffee cup to avoid single-use
+                plastic and paper waste.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-trash-fill ecotip-icon reduce-plastics"></i>
+              <h5 class="ecotip-title">Reduce Single-Use Plastics</h5>
+              <p class="ecotip-text">
+                Actively try to avoid products that come in single-use plastic
+                packaging.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-lightbulb-fill ecotip-icon led-bulbs"></i>
+              <h5 class="ecotip-title">Switch to LED Bulbs</h5>
+              <p class="ecotip-text">
+                Replace traditional light bulbs with energy-efficient LED bulbs
+                to save electricity.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-power ecotip-icon unplug-electronics"></i>
+              <h5 class="ecotip-title">Unplug Electronics</h5>
+              <p class="ecotip-text">
+                Unplug devices and chargers when they are not in use to prevent
+                phantom energy drain.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i
+                class="bi bi-thermometer-half ecotip-icon smart-thermostats"
+              ></i>
+              <h5 class="ecotip-title">Use Smart Thermostats</h5>
+              <p class="ecotip-text">
+                Install a smart thermostat to optimize your home's heating and
+                cooling and reduce energy consumption.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-compost ecotip-icon composting"></i>
+              <h5 class="ecotip-title">Start Composting</h5>
+              <p class="ecotip-text">
+                Compost your food scraps and yard waste to reduce landfill waste
+                and create nutrient-rich soil.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-water ecotip-icon cold-wash"></i>
+              <h5 class="ecotip-title">Wash Clothes in Cold Water</h5>
+              <p class="ecotip-text">
+                Washing your clothes in cold water saves significant energy and
+                is gentler on your fabrics.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card ecotip-card">
+            <div class="card-body">
+              <i class="bi bi-wind ecotip-icon air-dry"></i>
+              <h5 class="ecotip-title">Air Dry Your Clothes</h5>
+              <p class="ecotip-text">
+                Skip the dryer whenever possible and let your clothes air dry to
+                save energy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document
+        .querySelector('.navbar-toggler')
+        .addEventListener('click', function () {
+          this.classList.toggle('active');
+        });
+    </script>
+  </body>
+</html>
