@@ -62,4 +62,21 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     productSlider.appendChild(card);
   });
+
+  // 🔄 Auto Slide Logic
+  let scrollPosition = 0;
+  setInterval(() => {
+    const scrollWidth = productSlider.scrollWidth;
+    const containerWidth = productSlider.clientWidth;
+
+    scrollPosition += 220; // Adjust according to card width + margin
+    if (scrollPosition >= scrollWidth - containerWidth) {
+      scrollPosition = 0;
+    }
+
+    productSlider.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth',
+    });
+  }, 3000); // Slide every 3 seconds
 });

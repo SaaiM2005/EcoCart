@@ -10,6 +10,7 @@ html {
   overflow-x: hidden;
 }
 
+
 /* Category Section */
 .category-section h3,
 .trending-section h4 {
@@ -21,6 +22,36 @@ html {
 .category-item {
   text-align: center;
 }
+#topProductsSlider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+#topProductsSlider::-webkit-scrollbar {
+  display: none;
+}
+
+#topProductsSlider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
 
 .circle-wrapper {
   position: relative;
