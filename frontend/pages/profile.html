@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Page</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #1D2B64, #F8CDDA);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #34495e;
+    }
+
+    .profile-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 1100px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 700px;
+    }
+
+    .edit-form-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 300px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #34495e;
+    }
+
+    .profile-info {
+      margin-left: 30px;
+    }
+
+    .profile-info p {
+      font-size: 18px;
+      color: #7f8c8d;
+    }
+
+    .profile-info h3 {
+      font-size: 30px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      background-color: #f1f2f6;
+    }
+
+    .form-group input:focus {
+      border-color: #3498db;
+      background-color: #fff;
+    }
+
+    .form-group label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+
+    button {
+      width: 20%;
+      padding: 16px;
+      font-size: 18px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      text-align: left;
+      margin-left: -20px;
+    }
+
+    .profile img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin-right: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .edit-btn {
+      background-color: #f39c12;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      padding: 14px 28px;
+      cursor: pointer;
+      font-size: 18px;
+      margin-top: 20px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .edit-btn:hover {
+      background-color: #e67e22;
+    }
+
+    @media (max-width: 768px) {
+      .profile {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+      }
+
+      .profile img {
+        margin-bottom: 20px;
+      }
+
+      .profile-info {
+        margin-left: 0;
+        margin-top: 20px;
+      }
+
+      .profile-container,
+      .edit-form-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Profile Page -->
+  <div id="profile-page" class="profile-container">
+    <div class="profile">
+      <img src="https://static.vecteezy.com/system/resources/previews/036/744/532/non_2x/user-profile-icon-symbol-template-free-vector.jpg" alt="Profile Image">
+      <div class="profile-info">
+        <h3 id="profile-name">No Name</h3>
+        <p id="profile-phone">Phone: </p>
+        <p id="profile-address">Address: </p>
+        <p id="profile-email">Email: </p>
+        <p id="profile-country">Country: </p>
+        <p id="profile-pincode">Pincode: </p>
+      </div>
+    </div>
+    <button class="edit-btn" onclick="goToEditProfile()">Edit Profile</button>
+  </div>
+
+  <!-- Edit Profile Form Page -->
+  <div id="edit-profile-page" class="edit-form-container" style="display: none;">
+    <h2>Edit Profile</h2>
+    <form id="edit-profile-form">
+      <div class="form-group">
+        <input type="text" id="name" required placeholder="Full Name" />
+        <label for="name">Your full name</label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="phone" required placeholder="Phone Number" pattern="[0-9]{10}" maxlength="10" />
+        <label for="phone">10-digit mobile number</label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="address" required placeholder="Address" />
+        <label for="address">Street/City/State</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" required placeholder="Email" />
+        <label for="email">Valid email address</label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="country" required placeholder="Country" />
+        <label for="country">Country of residence</label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="pincode" required placeholder="Pin Code" pattern="[0-9]{6}" maxlength="6" />
+        <label for="pincode">6-digit postal code</label>
+      </div>
+      <button type="submit">Save Profile</button>
+    </form>
+  </div>
+
+  <script>
+    // Load saved data on page load
+    window.onload = function () {
+      const profileData = JSON.parse(localStorage.getItem("profileData"));
+
+      if (profileData) {
+        document.getElementById('profile-name').textContent = profileData.name;
+        document.getElementById('profile-phone').textContent = 'Phone: ' + profileData.phone;
+        document.getElementById('profile-address').textContent = 'Address: ' + profileData.address;
+        document.getElementById('profile-email').textContent = 'Email: ' + profileData.email;
+        document.getElementById('profile-country').textContent = 'Country: ' + profileData.country;
+        document.getElementById('profile-pincode').textContent = 'Pincode: ' + profileData.pincode;
+      }
+    };
+
+    function goToEditProfile() {
+      const profileData = JSON.parse(localStorage.getItem("profileData"));
+
+      if (profileData) {
+        document.getElementById('name').value = profileData.name;
+        document.getElementById('phone').value = profileData.phone;
+        document.getElementById('address').value = profileData.address;
+        document.getElementById('email').value = profileData.email;
+        document.getElementById('country').value = profileData.country;
+        document.getElementById('pincode').value = profileData.pincode;
+      }
+
+      document.getElementById('profile-page').style.display = 'none';
+      document.getElementById('edit-profile-page').style.display = 'block';
+    }
+
+    document.getElementById('edit-profile-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const profileData = {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        country: document.getElementById('country').value.trim(),
+        pincode: document.getElementById('pincode').value.trim(),
+      };
+
+      localStorage.setItem("profileData", JSON.stringify(profileData));
+
+      document.getElementById('profile-name').textContent = profileData.name;
+      document.getElementById('profile-phone').textContent = 'Phone: ' + profileData.phone;
+      document.getElementById('profile-address').textContent = 'Address: ' + profileData.address;
+      document.getElementById('profile-email').textContent = 'Email: ' + profileData.email;
+      document.getElementById('profile-country').textContent = 'Country: ' + profileData.country;
+      document.getElementById('profile-pincode').textContent = 'Pincode: ' + profileData.pincode;
+
+      document.getElementById('profile-page').style.display = 'block';
+      document.getElementById('edit-profile-page').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
