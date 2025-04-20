@@ -3,365 +3,99 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Catalogue - CATEGORY NAME</title>
+    <title>Eco-Friendly Fertilizers - EcoCart</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <style>
-      .product-card {
-        transition: transform 0.3s ease;
-      }
-      .product-card:hover {
-        transform: scale(1.03);
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="/EcoCart/frontend/css/category/fertilizer.css"
+    />
   </head>
   <body>
-    <div class="container py-5">
-      <h2 class="mb-4 text-center">CATEGORY NAME</h2>
-
-      <!-- Subcategory Tabs -->
-      <ul
-        class="nav nav-tabs justify-content-center mb-4"
-        id="subcategoryTabs"
-        role="tablist"
+    <nav class="navbar fixed-top bg-white shadow-sm">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
       >
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link active"
-            id="all-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#all"
-            type="button"
-            role="tab"
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand" href="/EcoCart/frontend/pages/dashboard.html"
+            >EcoCart</a
           >
-            All Products
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
+        </div>
+        <div class="search-container mx-auto">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search for eco products..."
+          />
+          <div class="search-icon">🔍</div>
+        </div>
+        <div class="d-flex align-items-center">
           <button
-            class="nav-link"
-            id="sub1-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#sub1"
+            class="navbar-toggler"
             type="button"
-            role="tab"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
           >
-            Subcategory 1
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="sub2-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#sub2"
-            type="button"
-            role="tab"
-          >
-            Subcategory 2
-          </button>
-        </li>
-      </ul>
-
-      <!-- Products Tabs Content -->
-      <div class="tab-content" id="productTabsContent">
-        <!-- All Products -->
-        <div class="tab-pane fade show active" id="all" role="tabpanel">
-          <div class="row g-4">
-            <!-- Repeat this block for each product -->
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card product-card">
-                <img
-                  src="https://via.placeholder.com/300"
-                  class="card-img-top"
-                  alt="Product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Product Name</h5>
-                  <p class="card-text">Short description about the product.</p>
-                  <p class="fw-bold">₹ 999</p>
-                  <a href="#" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
-            <!-- /Product -->
+        </div>
+        <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="/EcoCart/frontend/pages/profile.html"
+                  >Profile</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/dashboard.html"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/EcoCart/frontend/pages/ecotips.html"
+                  >Ecotips</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Wishlist</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/LandingPage.html"
+                  >Signout</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
-
-        <!-- Subcategory 1 -->
-        <div class="tab-pane fade" id="sub1" role="tabpanel">
-          <div class="row g-4">
-            <!-- Add relevant products for Subcategory 1 here -->
-          </div>
-        </div>
-
-        <!-- Subcategory 2 -->
-        <div class="tab-pane fade" id="sub2" role="tabpanel">
-          <div class="row g-4">
-            <!-- Add relevant products for Subcategory 2 here -->
+      </div>
+    </nav>
+    <div class="container py-5 mt-5">
+      <h2 class="mb-4 text-center category-heading">Fertilizers</h2>
+      <div id="fertilizersContainer" class="row g-4">
+        <div class="col-12 text-center">
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
         </div>
       </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/EcoCart/frontend/js/category/fertilizer_json.js"></script>
+    <script src="/EcoCart/frontend/js/category/fertilizer.js"></script>
   </body>
 </html>

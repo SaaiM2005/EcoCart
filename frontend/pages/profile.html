@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Stunning Profile</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/EcoCart/frontend/css/profile.css" />
+    <style>
+      /* Basic styling for the icons in the navbar */
+      .icon-group-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-right: 15px;
+      }
+
+      .icon-group-vertical img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        opacity: 0.8;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      .icon-group-vertical img:hover {
+        opacity: 1;
+      }
+
+      .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .search-input {
+        padding: 8px 35px 8px 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        outline: none;
+        width: 300px; /* Adjust as needed */
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        transition: border-color 0.3s ease-in-out,
+          background-color 0.3s ease-in-out;
+      }
+
+      .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .search-input:focus {
+        border-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .search-icon {
+        position: absolute;
+        right: 10px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      @media (max-width: 768px) {
+        .search-input {
+          width: 200px;
+        }
+        .icon-group-vertical {
+          margin-right: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-animation">
+      <div id="stars1"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+    </div>
+
+    <nav class="navbar fixed-top bg-transparent shadow-sm">
+      <div
+        class="container-fluid d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand" href="/EcoCart/frontend/pages/dashboard.html"
+            >EcoCart</a
+          >
+        </div>
+
+        <div class="search-container mx-auto">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search for eco products..."
+          />
+          <div class="search-icon">🔍</div>
+        </div>
+
+        <div class="icon-group-vertical">
+          <a href="/EcoCart/frontend/pages/wishlist.html" class="wishlist-icon">
+            <img src="/EcoCart/frontend/assets/icons/wish.png" alt="Wishlist" />
+          </a>
+          <a href="/EcoCart/frontend/pages/cart.html" class="cart-icon">
+            <img
+              src="/EcoCart/frontend/assets/icons/shopping-cart.png"
+              alt="Cart"
+            />
+          </a>
+        </div>
+
+        <div class="d-flex align-items-center">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="/EcoCart/frontend/pages/profile.html"
+                  >Profile</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/dashboard.html"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/EcoCart/frontend/pages/ecotips.html"
+                  >Ecotips</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Wishlist</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/EcoCart/frontend/pages">Chatbot</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="/EcoCart/frontend/pages/LandingPage.html"
+                  >Signout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+      <div id="profile-page" class="profile-container glass">
+        <div class="profile-card">
+          <div class="profile-header">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/036/744/532/non_2x/user-profile-icon-symbol-template-free-vector.jpg"
+              alt="Profile Image"
+              class="profile-image"
+            />
+            <h2 id="profile-name" class="profile-name">No Name</h2>
+          </div>
+          <div class="profile-details">
+            <p><i class="icon">📞</i> <span id="profile-phone">Phone:</span></p>
+            <p>
+              <i class="icon">🏠</i> <span id="profile-address">Address:</span>
+            </p>
+            <p><i class="icon">✉️</i> <span id="profile-email">Email:</span></p>
+            <p>
+              <i class="icon">🌍</i> <span id="profile-country">Country:</span>
+            </p>
+            <p>
+              <i class="icon">📍</i> <span id="profile-pincode">Pincode:</span>
+            </p>
+          </div>
+          <button class="edit-btn interactive-btn" onclick="goToEditProfile()">
+            <i class="icon">✏️</i> Edit Profile
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="edit-profile-page"
+        class="edit-form-container glass"
+        style="display: none"
+      >
+        <h2 class="form-title">Edit Your Profile</h2>
+        <form id="edit-profile-form">
+          <div class="form-group">
+            <input
+              type="text"
+              id="name"
+              required
+              placeholder="Full Name"
+              class="form-input interactive-input"
+            />
+            <label for="name" class="form-label">Your full name</label>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="phone"
+              required
+              placeholder="Phone Number"
+              pattern="[0-9]{10}"
+              maxlength="10"
+              class="form-input interactive-input"
+            />
+            <label for="phone" class="form-label">10-digit mobile number</label>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="address"
+              required
+              placeholder="Address"
+              class="form-input interactive-input"
+            />
+            <label for="address" class="form-label">Street/City/State</label>
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              required
+              placeholder="Email"
+              class="form-input interactive-input"
+            />
+            <label for="email" class="form-label">Valid email address</label>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="country"
+              required
+              placeholder="Country"
+              class="form-input interactive-input"
+            />
+            <label for="country" class="form-label">Country of residence</label>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="pincode"
+              required
+              placeholder="Pin Code"
+              pattern="[0-9]{6}"
+              maxlength="6"
+              class="form-input interactive-input"
+            />
+            <label for="pincode" class="form-label">6-digit postal code</label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="save-btn interactive-btn">
+              <i class="icon">💾</i> Save Changes
+            </button>
+            <button
+              type="button"
+              class="cancel-btn interactive-btn"
+              onclick="document.getElementById('profile-page').style.display = 'flex'; document.getElementById('profile-page').style.opacity = '1'; document.getElementById('edit-profile-page').style.display = 'none'; document.getElementById('edit-profile-page').style.opacity = '0';"
+            >
+              <i class="icon">❌</i> Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/EcoCart/frontend/js/profile.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggler = document.querySelector('.navbar-toggler');
+        const offcanvas = document.getElementById('offcanvasNavbar');
+
+        offcanvas.addEventListener('show.bs.offcanvas', () => {
+          toggler.classList.add('active');
+        });
+
+        offcanvas.addEventListener('hidden.bs.offcanvas', () => {
+          toggler.classList.remove('active');
+        });
+
+        document.body.classList.add('loaded');
+      });
+    </script>
+  </body>
+</html>

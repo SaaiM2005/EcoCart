@@ -14,6 +14,27 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/EcoCart/frontend/css/dashboard.css" />
+
+    <style>
+      .chatbot-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #28a745;
+        color: white;
+        font-weight: bold;
+        padding: 12px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        z-index: 1000;
+      }
+
+      .chatbot-button:hover {
+        background-color: #218838;
+      }
+    </style>
   </head>
 
   <body>
@@ -46,6 +67,19 @@
           <div class="search-icon">🔍</div>
         </div>
 
+        <!-- Right: Wishlist Icon + Toggler -->
+        <div class="icon-group-vertical">
+          <a href="/EcoCart/frontend/pages/wishlist.html" class="wishlist-icon">
+            <img src="/EcoCart/frontend/assets/icons/wish.png" alt="Wishlist" />
+          </a>
+          <a href="/EcoCart/frontend/pages/cart.html" class="cart-icon">
+            <img
+              src="/EcoCart/frontend/assets/icons/shopping-cart.png"
+              alt="Cart"
+            />
+          </a>
+        </div>
+
         <!-- Right: Toggler -->
         <div class="d-flex align-items-center">
           <button
@@ -65,7 +99,7 @@
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+              <li class="nav-item"><a class="nav-link" href="/EcoCart/frontend/pages/profile.html">Profile</a></li>
               <li class="nav-item">
                 <a
                   class="nav-link"
@@ -80,6 +114,11 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Wishlist</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/EcoCart/frontend/pages"
+                  >Chatbot</a
+                >
               </li>
               <li class="nav-item">
                 <a
@@ -158,7 +197,7 @@
                   alt="Firtilizers"
                   class="category-image"
                 />
-                <span class="circle-text">Firtilizers</span>
+                <span class="circle-text">Fertilizers</span>
               </div>
             </div>
           </a>
@@ -246,42 +285,72 @@
 
       <!-- TRENDING PRODUCTS -->
       <section class="trending-section mt-5 text-center">
-        <h4>Most Sold Biodegradable Products</h4>
+        <h4>Most Trending Biodegradable Products</h4>
         <div class="scrolling-wrapper">
           <div class="product-card">
             <img
-              src="/EcoCart/frontend/assets/products/product1.jpg"
+              src="https://brownliving.in/cdn/shop/articles/7-benefits-of-using-wooden-hair-combs-318053.jpg?v=1724217181&width=500"
               alt="Product 1"
             />
-            <p>Reusable Bamboo Cutlery</p>
+            <p>Wooden Combs</p>
           </div>
           <div class="product-card">
             <img
-              src="/EcoCart/frontend/assets/products/product2.jpg"
+              src="https://i.etsystatic.com/25947065/r/il/70b9ad/5968477314/il_1588xN.5968477314_3pqb.jpg"
               alt="Product 2"
             />
-            <p>Compostable Garbage Bags</p>
+            <p>Wooden Pens</p>
           </div>
           <div class="product-card">
             <img
-              src="/EcoCart/frontend/assets/products/product3.jpg"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdzOibcuPivKZJ1CMuWJ0xOrb8J7tQ_m2L2w&s"
               alt="Product 3"
             />
-            <p>Coconut Fiber Scrubber</p>
+            <p>Wooden Utilities</p>
           </div>
           <div class="product-card">
             <img
-              src="/EcoCart/frontend/assets/products/product4.jpg"
+              src="https://i.etsystatic.com/33800644/r/il/75ad09/6433916811/il_1588xN.6433916811_kjef.jpg"
               alt="Product 4"
             />
-            <p>Eco Dishwash Bar</p>
+            <p>Linen Clothing</p>
+          </div>
+          <div class="product-card">
+            <img
+              src="https://i.etsystatic.com/21879200/r/il/4441f9/4098426782/il_1588xN.4098426782_d4m9.jpg"
+              alt="Product 5"
+            />
+            <p>Packaging</p>
           </div>
         </div>
       </section>
     </div>
 
+    <!-- Chatbot Floating Button -->
+    <a
+      href="/EcoCart/frontend/pages/chatbot.html"
+      class="chatbot-button"
+      title="Chat with us"
+    >
+      💬 Chatbot
+    </a>
+
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/EcoCart/frontend/js/dashboard.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggler = document.querySelector('.navbar-toggler');
+        const offcanvas = document.getElementById('offcanvasNavbar');
+
+        offcanvas.addEventListener('show.bs.offcanvas', () => {
+          toggler.classList.add('active');
+        });
+
+        offcanvas.addEventListener('hidden.bs.offcanvas', () => {
+          toggler.classList.remove('active');
+        });
+      });
+    </script>
   </body>
 </html>

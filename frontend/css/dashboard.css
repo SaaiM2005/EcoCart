@@ -146,6 +146,51 @@ html {
 }
 
 /* Navbar Styles */
+
+/* Icon container near the left */
+.icon-group-vertical {
+  position: fixed;
+  top: 80px; /* adjust based on navbar height */
+  right: 10px; /* moved from left to right */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 9999;
+}
+
+/* Shared icon styles */
+.wishlist-icon,
+.cart-icon {
+  background-color: #f8f9fa;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Image size & hover effects */
+.wishlist-icon img,
+.cart-icon img {
+  width: 35px;
+  height: 35px;
+  transition: transform 0.2s ease;
+}
+
+/* Hover styles */
+.wishlist-icon:hover,
+.cart-icon:hover {
+  background-color: #e2e6ea;
+  transform: scale(1.05);
+}
+
+.wishlist-icon img:hover,
+.cart-icon img:hover {
+  transform: scale(1.2);
+}
+
 .navbar {
   background-color: white !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

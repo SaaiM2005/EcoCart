@@ -7,9 +7,11 @@ class ProductLoader {
     this.filteredProducts = [];
     this.currentPage = 1;
     this.totalPages = 0;
+
     this.paginationContainer = document.createElement('div');
     this.paginationContainer.className = 'd-flex justify-content-center mt-4';
     this.container.parentNode.appendChild(this.paginationContainer);
+
     this.prevButton = this.createPaginationButton('Previous', () =>
       this.loadPreviousPage()
     );
@@ -18,25 +20,27 @@ class ProductLoader {
     );
     this.pageInfoSpan = document.createElement('span');
     this.pageInfoSpan.className = 'mx-3';
+
     this.paginationContainer.appendChild(this.prevButton);
     this.paginationContainer.appendChild(this.pageInfoSpan);
     this.paginationContainer.appendChild(this.nextButton);
+
     this.init();
   }
 
   async init() {
     try {
       const response = await fetch(this.jsonPath);
-      if (!response.ok) {
+      if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
-      }
       const data = await response.json();
-      this.allProducts = data.filter(
-        (p) =>
-          p.categorie.toLowerCase() === 'clothing - shirt' ||
-          p.categorie.toLowerCase() === 'clothing - pant'
+
+      this.allProducts = data.filter((p) =>
+        ['clothing - shirt', 'clothing - pant'].includes(
+          p.categorie.toLowerCase()
+        )
       );
-      this.updatePagination(); // Initial load of all clothing items
+      this.updatePagination();
     } catch (error) {
       console.error('Error loading products:', error);
       this.container.innerHTML = `<div class="col-12 text-center text-danger">Failed to load products.</div>`;
@@ -45,9 +49,9 @@ class ProductLoader {
 
   renderProducts() {
     this.container.innerHTML = '';
-    const startIndex = (this.currentPage - 1) * this.productsPerPage;
-    const endIndex = startIndex + this.productsPerPage;
-    const productsToDisplay = this.allProducts.slice(startIndex, endIndex);
+    const start = (this.currentPage - 1) * this.productsPerPage;
+    const end = start + this.productsPerPage;
+    const productsToDisplay = this.allProducts.slice(start, end);
 
     if (productsToDisplay.length === 0) {
       this.container.innerHTML = `<div class="col-12 text-center">No clothing items found.</div>`;
@@ -59,20 +63,49 @@ class ProductLoader {
       const card = document.createElement('div');
       card.className = 'col-sm-6 col-md-4 col-lg-3 mb-4';
       card.innerHTML = `
-            <div class="card h-100 shadow-sm">
-              <img src="${product['image url']}" class="card-img-top" alt="${product.productname}"
-                   onerror="this.onerror=null;this.src='/EcoCart/frontend/assets/img/placeholder.jpg';" style="height: 200px; object-fit: cover;">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">${product.productname}</h5>
-                <p class="card-text text-muted">${product.description}</p>
-                <p class="fw-bold mb-2">₹${product.price}</p>
-                <span class="badge bg-success align-self-start">${product.categorie}</span>
-              </div>
-            </div>
-          `;
+        <div class="card h-100 shadow-sm">
+          <img src="${product['image url']}" class="card-img-top" alt="${product.productname}"
+            onerror="this.onerror=null;this.src='/EcoCart/frontend/assets/img/placeholder.jpg';"
+            style="height: 200px; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${product.productname}</h5>
+            <p class="card-text text-muted">${product.description}</p>
+            <p class="fw-bold mb-2">₹${product.price}</p>
+            <span class="badge bg-success align-self-start">${product.categorie}</span>
+            <button class="btn btn-outline-success mt-auto" onclick="addToWishlist('${product.productname.replace(/'/g, "\\'")}')">
+              ❤️ Add to Wishlist
+            </button>
+          </div>
+        </div>
+      `;
       this.container.appendChild(card);
     });
+
     this.paginationContainer.style.display = 'flex';
+  }
+
+  renderFilteredProducts(filtered) {
+    this.container.innerHTML = '';
+    filtered.forEach((product) => {
+      const card = document.createElement('div');
+      card.className = 'col-sm-6 col-md-4 col-lg-3 mb-4';
+      card.innerHTML = `
+        <div class="card h-100 shadow-sm">
+          <img src="${product['image url']}" class="card-img-top" alt="${product.productname}"
+            onerror="this.onerror=null;this.src='/EcoCart/frontend/assets/img/placeholder.jpg';"
+            style="height: 200px; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${product.productname}</h5>
+            <p class="card-text text-muted">${product.description}</p>
+            <p class="fw-bold mb-2">₹${product.price}</p>
+            <span class="badge bg-success align-self-start">${product.categorie}</span>
+            <button class="btn btn-outline-success btn-sm mt-auto" onclick="addToWishlist('${product.productname}')">Wishlist</button>
+          </div>
+        </div>
+      `;
+      this.container.appendChild(card);
+    });
+    this.paginationContainer.style.display = 'none';
   }
 
   updatePagination() {
@@ -108,9 +141,8 @@ class ProductLoader {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const jsonPath = '/EcoCart/frontend/data/products.json'; // Define the path once
-
-  const allLoader = new ProductLoader({
+  const jsonPath = '/EcoCart/frontend/data/products.json';
+  window.productLoader = new ProductLoader({
     jsonPath: jsonPath,
     containerId: 'allProductsContainer',
     productsPerPage: 20,
