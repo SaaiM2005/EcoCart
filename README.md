@@ -1,54 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<body>
+# ♻️ EcoCart Dashboard
 
-  <h1>♻️ EcoCart Dashboard</h1>
+**EcoCart** is an eco-conscious web dashboard designed to help users track, analyze, and enhance their sustainability efforts by encouraging the use of green products. Featuring a stylish UI, immersive 3D backgrounds, and interactive charts, EcoCart makes going green both fun and educational. 🌿
 
-  <p><strong>EcoCart</strong> is an eco-conscious web dashboard that empowers users to track, analyze, and enhance their sustainability efforts through green product usage. With a stylish UI, immersive 3D background, and interactive charts, it brings a fun and educational twist to going green. 🌿</p>
+---
 
-  <img src="dashboard.png" alt="EcoCart Screenshot" />
+## 🌟 Features
 
-  <hr />
+- 🧠 **AI-Driven Modal Input** — Enter product details to receive smart eco-friendly suggestions.  
+- 🌱 **Eco Suggestions Modal** — Handpicked greener alternatives presented to users.  
+- 📈 **Usage Analytics Chart** — Visualize your monthly eco-product usage with dynamic Chart.js graphs.  
+- 🧼 **3D Interactive Background** — A smooth and futuristic aesthetic powered by Spline 3D.  
+- 🔒 **Responsive Off-Canvas Menu** — Clean navigation with an animated hamburger to close (X) button transition.  
+- 💡 **Typing Overlay Animation** — Welcoming splash screen with fade-in/out and typing effects for great first impressions.
 
-  <h2>🌟 Features</h2>
-  <ul>
-    <li>🧠 <strong>AI-Driven Modal Input</strong> — Users can input product details to receive eco-friendly suggestions.</li>
-    <li>🌱 <strong>Eco Suggestions Modal</strong> — Displays handpicked green alternatives.</li>
-    <li>📈 <strong>Usage Analytics Chart</strong> — Visualize monthly eco-product usage via Chart.js.</li>
-    <li>🧼 <strong>3D Interactive Background</strong> — Built with Spline for a smooth, futuristic aesthetic.</li>
-    <li>🔒 <strong>Responsive Off-Canvas Menu</strong> — Clean and accessible navbar with animated hamburger → X button.</li>
-    <li>💡 <strong>Typing Overlay Animation</strong> — Welcoming splash screen with fade transitions and typing effects.</li>
-  </ul>
+---
 
-  <hr />
+## 🛠️ Tech Stack
 
-  <h2>🛠️ Tech Stack</h2>
+| Frontend          | Libraries             | UI / Animations                      |
+|-------------------|----------------------|------------------------------------|
+| HTML5 / CSS3 / JS | Bootstrap 5.3, Chart.js | Spline 3D, Google Fonts (Poppins), Custom CSS Animations |
 
-  <table>
-    <thead>
-      <tr>
-        <th>Frontend</th>
-        <th>Libraries</th>
-        <th>UI / Animations</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>HTML5 / CSS3 / JS</td>
-        <td>Bootstrap 5.3, Chart.js</td>
-        <td>Spline 3D, Google Fonts (Poppins), Custom CSS Animations</td>
-      </tr>
-    </tbody>
-  </table>
+---
 
-  <hr />
+## 📸 UI Preview
 
-  <h2>📸 UI Preview</h2>
-  <div class="preview">
-    📊 Dashboard with Line Chart<br>
-    🧴 Modal for Eco-Friendly Suggestions<br>
-    🌍 Spline 3D Animated Background
-  </div>
+- 📊 Dashboard with interactive line chart  
+- 🧴 Modal popup for eco-friendly product suggestions  
+- 🌍 Spline-powered 3D animated background  
 
-</body>
-</html>
+---
+
+## 📂 Getting Started
+
+### Prerequisites
+
+- Modern web browser (Chrome, Firefox, Edge, Safari)
+- Internet connection to load external libraries and fonts
+
+### How to run
+
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/your-username/ecocart-dashboard.git
